@@ -4,13 +4,11 @@ import {Button} from "@/components/ui/button";
 import InputField from "@/components/forms/inputfield";
 import SelectField from "@/components/forms/SelectField";
 import {INVESTMENT_GOALS, PREFERRED_INDUSTRIES, RISK_TOLERANCE_OPTIONS} from "@/lib/constants";
-
-import countryList from 'react-select-country-list'
-import {useMemo} from "react";
 import {CountrySelectField} from "@/components/forms/CountrySelectField";
+import FooterLink from "@/components/forms/FooterLink";
 
 const SignUp = () => {
-    const COUNTRY_LIST = useMemo(() => countryList().getData(), [])
+
     const {
         register,
         handleSubmit,
@@ -109,6 +107,7 @@ const SignUp = () => {
                 <Button type="submit" disabled={isSubmitting} className="yellow-btn w-full mt-5">
                     {isSubmitting ? "Creating Account" : "Start Your Investing Journey"}
                 </Button>
+                <FooterLink text={`Already have an Account?`} linkText={`Sign In`} href={`/sign-in`}/>
             </form>
         </>
     )
