@@ -6,7 +6,13 @@ import UserDropdown from "@/components/UserDropdown";
 import {searchStocks} from "@/lib/actions/finnhub.actions";
 
 const Header = async ({user}:{user:User}) => {
-    const initialStocks = await searchStocks();
+    // const initialStocks = await searchStocks();
+    let initialStocks: StockWithWatchlistStatus[]=[]
+    try {
+        initialStocks = await searchStocks();
+    }catch(err){
+        console.error('Failed to Load initialStock list', err);
+    }
     return (
         <header className="sticky top-0 header">
             <div className="container header-wrapper">

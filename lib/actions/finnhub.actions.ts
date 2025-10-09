@@ -124,10 +124,10 @@ export const searchStocks = cache(async (query?: string): Promise<StockWithWatch
                         const url = `${FINNHUB_BASE_URL}/stock/profile2?symbol=${encodeURIComponent(sym)}&token=${token}`;
                         // Revalidate every hour
                         const profile = await fetchJSON<never>(url, 3600);
-                        return { sym, profile } as { sym: string; profile: never };
+                        return { sym, profile } as { sym: string; profile: any };
                     } catch (e) {
                         console.error('Error fetching profile2 for', sym, e);
-                        return { sym, profile: null } as { sym: string; profile: never };
+                        return { sym, profile: null } as { sym: string; profile: any };
                     }
                 })
             );
